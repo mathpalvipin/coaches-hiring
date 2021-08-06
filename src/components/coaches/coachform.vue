@@ -86,7 +86,7 @@ if(this.areas.val.length==0){
 this.areas.isValid=false;
 this.isValid=false;
 }
-console.log(this.isValid);
+ 
 			},
 			clearvalidity(input){
 				
