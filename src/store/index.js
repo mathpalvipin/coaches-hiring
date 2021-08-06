@@ -84,7 +84,7 @@ returnSecureToken:true
 				});
 
 			const responseData = await res.json();
-			if(!res.ok){console.log(responseData['error'].message);
+			if(!res.ok){
 		const error = new Error (responseData['error'].message||'failed to authenicate'); 
 	throw error;		}
 	localStorage.setItem('token',responseData.idToken);
@@ -102,7 +102,7 @@ returnSecureToken:true
 
 		},
 async signup(context, payload){
-	console.log(payload);
+
 const res =await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBL8XtfE9KiX-SpcUz6WSx-Io3I8zUaPQ0',
 {method:'POST',
 body:JSON.stringify({
@@ -113,7 +113,7 @@ returnSecureToken:true
 
 				});
 			const responseData = await res.json();
-			if(!res.ok){console.log(responseData['error'].message);
+			if(!res.ok){
 			const error = new Error (responseData['error'].message||'failed to authenicate'); 
 	throw error;		}
 	
