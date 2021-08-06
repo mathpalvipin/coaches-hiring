@@ -1,8 +1,8 @@
 <template>
 	<header>
 		<nav>
-<h1><router-link to='/'>find coach</router-link></h1>
-<router-link to='/coaches'>ALL coach</router-link>
+<h1><router-link to='/'>Find Mentor</router-link></h1>
+<router-link to='/coaches'>ALL Mentor</router-link>
 <router-link to='/requests'  v-if='isauth'>Show requests</router-link>
 <router-link to='/auth' v-if='!isauth'>Login</router-link>
 <router-link to='/auth' @click='logout' v-if='isauth'>Logout</router-link>

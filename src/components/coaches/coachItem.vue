@@ -17,7 +17,7 @@
 	
 	computed:{
 		fullname(){
-			return this.firstName+this.lastName;
+			return this.firstName+" "+this.lastName;
 		},
 		coachcontactlink(){
 			return '/coaches/'+this.id+'/contact/';

@@ -2,7 +2,7 @@
 	<div>
 	<section>
 		<base-card>
-	<h2>regidter as a coach now!</h2>
+	<h2>Register as a Mentor now!</h2>
 	<coach-form @saved-data='saved'></coach-form>
 </base-card>
 </section>
@@ -16,9 +16,11 @@
 		},
 		methods:{
 		saved(data){
-				console.log('formre');
+	
+		let user =this.$store.getters['userId'];
+	
 this.$store.dispatch('coaches/saved',data).then(()=> {
-	this.$router.replace('/coaches/c3');
+	this.$router.replace('/coaches/'+user);
 });
 
 

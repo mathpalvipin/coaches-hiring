@@ -21,7 +21,7 @@ const store = createStore({
 			return state.token;
 		},
 		isauthenticated(state){
-			console.log('auth');
+			
 			return !!state.token; 
 		}
 	},
@@ -41,6 +41,8 @@ state.token=payload.token,
 
 	},
 	actions:{
+		
+		
 		autologin(context){console.log('autologin');
 			const token =localStorage.getItem('token');
 			const userId =localStorage.getItem('userId');
@@ -73,6 +75,7 @@ tokenExpiration:null});
 
 
 		async login(context,payload){
+
 			const res =await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBL8XtfE9KiX-SpcUz6WSx-Io3I8zUaPQ0',
 {method:'POST',
 body:JSON.stringify({
@@ -82,13 +85,16 @@ returnSecureToken:true
 })
 
 				});
+
 			const responseData = await res.json();
+			 
 			if(!res.ok){console.log(responseData['error'].message);
 			const error = new Error (responseData['error'].message||'failed to authenicate'); 
 	throw error;		}
 	localStorage.setItem('token',responseData.idToken);
 	localStorage.setItem('userId',responseData.localId);
 
+	
 	context.commit('signup',{
 		token:responseData.idToken,
 		userId:responseData.localId,
@@ -100,6 +106,7 @@ returnSecureToken:true
 
 		},
 async signup(context, payload){
+	console.log(payload);
 const res =await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBL8XtfE9KiX-SpcUz6WSx-Io3I8zUaPQ0',
 {method:'POST',
 body:JSON.stringify({

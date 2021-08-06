@@ -33,10 +33,9 @@
 			};
 		},
 		created(){
-			console.log(this.$store.getters['coaches/getcoaches']);
+			
       this.selectcoach=this.$store.getters['coaches/getcoaches'].find(coach =>coach.id===this.id);
      
-      console.log(this.selectcoach);
 
     },
 		computed:{
@@ -50,7 +49,7 @@
 				return this.selectcoach.areas;
 			},
 			fullname(){
-				return this.selectcoach.firstName +this.selectcoach.lastName;
+				return this.selectcoach.firstName +" "+this.selectcoach.lastName;
 
 			},rate(){
 				return this.selectcoach.hourlyRate;

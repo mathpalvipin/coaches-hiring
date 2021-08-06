@@ -108,7 +108,7 @@ console.log(this.isValid);
 
 
 			}
-			console.log(formdata);
+			
 			this.$emit('saved-data',formdata);
 		}
 	}}

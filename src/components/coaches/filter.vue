@@ -1,6 +1,6 @@
 <template>
 <base-card>
-<h3> Filter your cach</h3>
+<h3> Filter your Mentor</h3>
 <span>
 <input type="checkbox" id='frontend' checked @change='setfilter'>
 <label for='frontend'> frontend</label>

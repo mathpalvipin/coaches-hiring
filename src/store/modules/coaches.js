@@ -37,7 +37,9 @@ export default {
 		state.lastfetch= new Date().getTime();
 	}
 	},
-	getters:{shouldUpdate(state){
+	getters:{
+
+		shouldUpdate(state){
 		const lastfetch=state.lastfetch;
 
 		if(!lastfetch){
@@ -47,8 +49,10 @@ export default {
 		return (currrentTimeStamp-lastfetch)/1000>60;
 			
 	},
-		getcoaches(state){
-			
+		getcoaches(state,rootGetters){
+	
+
+			//state.coaches.filter(coach=>coach.id!==rootGetters.userId);
 			return state.coaches;
 		},
 		hascoaches(state){
@@ -63,6 +67,7 @@ export default {
 	actions:{
 
 		async saved(context,data){
+
 			const coachID =context.rootGetters.userId;
 			const coachdata={
 				
@@ -79,6 +84,7 @@ export default {
 
 			});
 			// const respData=await response.json();
+			
 			if(!response.ok){
 			//..error
 			}
@@ -96,10 +102,9 @@ export default {
 
 	
 async loadcoach(context,payload){
-	console.log(payload.forceRefresh);
 	
 	if(!payload.forceRefresh&&!context.getters.shouldUpdate){
-console.log(context.getters.shouldUpdate);
+
 		return ;
 	}
 const response=	await fetch(`https://vue--finalproject.firebaseio.com/coaches.json`);
@@ -109,7 +114,9 @@ const error = new Error (responseData.message|| 'failed to fetch');
   throw error;  }
 
     const coaches=[];
+ 
     for(const key in responseData){
+   
 const coach ={
 id:key,
 firstName:responseData[key].firstName,
@@ -119,7 +126,9 @@ firstName:responseData[key].firstName,
 		areas:responseData[key].areas,
     };
     coaches.push(coach);
-	}
+	
+}
+
 	context.commit("setcoach",coaches);
 	context.commit('setfetchtime');
 }

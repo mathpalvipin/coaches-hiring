@@ -13,7 +13,7 @@
 				:email='request.userEmail'
 				:message='request.message'></request-item>
 			</ul>
-			<h3 v-if='!hasrequest' >you havn;t receved any request yet</h3>
+			<h3 v-if='!hasrequest' >You havn't receved any request yet</h3>
 		</base-card>
 	</section>
 </div>

@@ -9,13 +9,13 @@
 	<section>
 		<base-card>
 		<div class="controls">
-			<base-button mode="outline"  @click='loadcoaches(true)'  >refresh</base-button>
+			<base-button mode="outline"  @click='loadcoaches(true)'  >Refresh</base-button>
 			<base-button v-if='!isauth'
-		link to='/auth?redirect=register'>Login as coach</base-button>
+		link to='/auth?redirect=register'>Login as Mentor</base-button>
 		<base-button v-if='!iscoach&&!isloading&&isauth
-		'  link to='/register'> register </base-button>
+		'  link to='/register'> Register </base-button>
 		</div>
-		<div v-if='hascoaches'><h2>list of coache</h2>
+		<div v-if='hascoaches'><h2>List of Mentor</h2>
 <ul>
 	<div v-if='isloading'>
 		<base-spinner></base-spinner>
@@ -53,25 +53,32 @@ career:true
 		setFilter
 		},
 		computed:{isauth(){
+
 return this.$store.getters.isauthenticated;
 		},
 			iscoach(){
 				return this.$store.getters['coaches/iscoach'];
 			},
 		coaches(){
-		console.log(this.$store.getters['coaches/getcoaches']);
-		console.log(this.activefilter);
+	let user=this.$store.getters['userId'];
+		
 		const coaches =this.$store.getters['coaches/getcoaches'];
 		return coaches.filter(coach=>{
+			if(coach.id==user){
+		
+				return false;
+			}
 			if(this.activefilter.frontend&&coach.areas.includes('frontend')){
 				return true;
 			}
+
 			if(this.activefilter.backend&&coach.areas.includes('backend')){
 				return true;
 			}
 			if(this.activefilter.career&&coach.areas.includes('career')){
 				return true;
 			}
+
 			return false;
 		});
 		
