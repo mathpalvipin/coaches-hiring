@@ -49,7 +49,7 @@ export default {
 		return (currrentTimeStamp-lastfetch)/1000>60;
 			
 	},
-		getcoaches(state,rootGetters){
+		getcoaches(state){
 	
 
 			//state.coaches.filter(coach=>coach.id!==rootGetters.userId);

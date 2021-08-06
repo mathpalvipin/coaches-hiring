@@ -31,7 +31,7 @@ children:[
 ]
  });
  router.beforeEach(function(to,from,next){
-    console.log(store.getters.isauthenticated);
+    
 if(to.meta.Auth&&!store.getters.isauthenticated){
 	next('/auth');
 }else if(to.meta.unAuth&&store.getters.isAuthenticated){
