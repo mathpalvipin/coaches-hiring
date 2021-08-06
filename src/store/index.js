@@ -41,13 +41,10 @@ state.token=payload.token,
 
 	},
 	actions:{
-		
-		
-		autologin(context){console.log('autologin');
+	autologin(context){
 			const token =localStorage.getItem('token');
 			const userId =localStorage.getItem('userId');
-
-			if(token&& userId){
+				if(token&& userId){
 
 				context.commit('setuser',{
 					token:token,
@@ -87,9 +84,8 @@ returnSecureToken:true
 				});
 
 			const responseData = await res.json();
-			 
 			if(!res.ok){console.log(responseData['error'].message);
-			const error = new Error (responseData['error'].message||'failed to authenicate'); 
+		const error = new Error (responseData['error'].message||'failed to authenicate'); 
 	throw error;		}
 	localStorage.setItem('token',responseData.idToken);
 	localStorage.setItem('userId',responseData.localId);
